@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th th:text="Name">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="user : ${userList}" th:object="${user}">
+        <tr>
+            <td th:text="*{name}">User name</td>
+        </tr>
+    </th:block>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th th:text="Name">Name</th>
+    </tr>
+    </tfoot>
+</table>
+
+<br>
+
+<form action="#" th:action="@{/user/add}" th:object="${user}" method="post">
+    <div><span th:text="Name">User name: </span><input type="text" th:field="*{name}"/></div>
+    <div><input type="submit" value="Save" th:href="Save"/> <input type="reset" value="Reset" th:value="Reset"/>
+    </div>
+</form>
+<br>
+<p th:text="${userExist}" style="color:red">User exist</p>
+</body>
+</html>
